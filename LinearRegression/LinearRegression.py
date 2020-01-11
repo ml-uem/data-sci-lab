@@ -1,6 +1,6 @@
 import numpy as np
 
-class LinnearRegression:
+class LinearRegression:
   """
     Simple Linnear regression
   """
