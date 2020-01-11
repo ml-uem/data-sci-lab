@@ -24,3 +24,16 @@ class LinearRegression:
     """
     """
     return x * self._slope + self._intercept
+
+  def r_square(self, X, y):
+    ''' 
+        Representa Lo bien que se aproxima a la nube 
+        de puntos en comparacion a la media
+    '''
+    prediction = self.predict(X)
+    n = y - prediction
+    m = y - np.mean(y)
+    rSquare = 1 - ( n.dot(n) / m.dot(m) )
+
+    return rSquare
+    # print(f"R square = {rSquare}")
