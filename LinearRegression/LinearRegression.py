@@ -17,9 +17,13 @@ class LinearRegression:
 
         return self
 
-    def predict(self,X):
-        return X * self._slope + self._intercept
 
-    def r_square(self,X,y):
-        _predict = self.predict(X)
-        return 1 - ((np.sum((y - _predict) ** 2)) / (np.sum((y - np.mean(y)) ** 2)))
+  def predict(self, x):
+    """
+    """
+    return x * self._slope + self._intercept
+
+  def rsquare(self, x, y):
+    n = y - self.predict(x)
+    m = y - np.mean(y)
+    return 1 - ( n.dot(n) / m.dot(m) )
