@@ -24,3 +24,10 @@ class LinearRegression:
     """
     """
     return x * self._slope + self._intercept
+
+  def rsquare(self, X, y):
+    prediction = self.predict(X)
+    n = y - prediction
+    m = y - np.mean(y)
+
+    return 1 - ( n.dot(n) / m.dot(m) )
