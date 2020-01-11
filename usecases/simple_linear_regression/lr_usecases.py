@@ -13,7 +13,7 @@ def main():
     y = df.values[:, 1]
     data = lineal.fit(x,y)
     lineal.predict(x)
-    r_square = lineal.r_square(y)
+    r_square = lineal.r_square(8,y)
     print(r_square)
 
 
