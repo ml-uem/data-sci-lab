@@ -27,6 +27,7 @@ class LinearRegression:
 
   def r_square(self, X, y):
     ''' 
+      # ----- Point cloud approach compared to the average ----- #
         Representa Lo bien que se aproxima a la nube 
         de puntos en comparacion a la media
     '''
