@@ -9,16 +9,14 @@ def main():
     df=pd.read_csv('data/1.csv', sep=',',header=None)
     x = df.values[:, 0]
     y = df.values[:, 1]
-    plt.scatter(x, y)
-    plt.show()
     data = lineal.fit(x,y)
-    print(data.slope)
-    print(data.intercept)
+    print(data._slope)
+    print(data._intercept)
 
-    #print(lineal.predict(8, x,y))
     print(lineal.predict(8))
 
     plt.scatter(x, y)
+    plt.plot(x,lineal.predict(x))
     plt.show()
 
 
