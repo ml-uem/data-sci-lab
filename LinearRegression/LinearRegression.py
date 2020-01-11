@@ -2,7 +2,7 @@ import numpy as np
 
 class LinearRegression:
   """
-    Simple Linnear regression
+    Simple Linear regression
   """
   def __init__(self):
     self._slope = 0

@@ -11,7 +11,7 @@ Package
  un directorio llamado 'nombrepack', que será el nombre del paquete en Python
  dentro del directorio 'nombrepack', los ficheros de código y un fichero __init__.py
  __init__.py contiene inicializaciones, como acceso fácil a clases:
-   from .LinnearRegression import LinnearRegression
+   from .LinearRegression import LinearRegression
 
 Subir a PyPi
 
