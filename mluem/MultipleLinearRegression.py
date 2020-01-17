@@ -5,18 +5,18 @@ class MultipleLinearRegression:
     Multiple Linear Regression Alg
     """
     def __init__(self):
-        A = 0
+        w = 0
 
     def fit(self, X, y):
 
-       w = np.linalg.solve(np.dot(X,np.transpose(X)),np.dot(np.transpose(X),y))
+        w = np.linalg.solve(np.dot(X,np.transpose(X)),np.dot(np.transpose(X),y))
 
-        return self
+    return self
 
   def predict(self, x):
     """
     """
-    return w * x 
+    return w * x    
 
   def rsquare(self, x, y):
     n = y - self.predict(x)
