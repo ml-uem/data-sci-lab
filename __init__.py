@@ -1,0 +1,2 @@
+from mluem.SimpleLinearRegression import SimpleLinearRegression
+from mluem.MultipleLinearRegression import MultipleLinearRegression
