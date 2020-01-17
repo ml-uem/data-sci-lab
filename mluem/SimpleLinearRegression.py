@@ -10,10 +10,10 @@ class SimpleLinearRegression(ModelInterface):
 
     def fit(self, X, y):
         self._slope = (np.mean(X.dot(y)) - (np.mean(X) * np.mean(y))) \
-            / (np.mean(X.dot(X)) - np.mean(X)**2)
+            / (np.mean(X.dot(X)) - np.mean(X) ** 2)
 
         self._intercept = ((np.mean(y) * np.mean(X.dot(X))) - np.mean(X) * np.mean(X.dot(y))) \
-            / (np.mean(X.dot(X)) - (np.mean(X)**2))
+            / (np.mean(X.dot(X)) - (np.mean(X) ** 2))
 
         return self
 
