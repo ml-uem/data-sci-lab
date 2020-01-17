@@ -1,11 +1,9 @@
+from .ModelInterface import ModelInterface
+
 import numpy as np
 
 
-class LinearRegression:
-    """
-    Simple Linear Regression
-    """
-
+class SimpleLinearRegression(ModelInterface):
     def __init__(self):
         self._slope = 0
         self._intercept = 0
