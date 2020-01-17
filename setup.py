@@ -1,7 +1,7 @@
 from setuptools import setup
 
-setup(name='ml_uem',
-      version='0.1',
+setup(name='mluem',
+      version='0.2',
       description='my ml package skeleton',
-      packages=['LinearRegression'],
+      packages=['mluem'],
       zip_safe=False )
