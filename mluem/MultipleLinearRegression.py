@@ -16,6 +16,6 @@ class MultipleLinearRegression(ModelInterface):
         return self._w * X
 
     def rsquare(self, X, y):
-        _m = y - np.mean(y)
-        _n = y - self.predict(X)
-        return 1 - (_n.dot(_n) / _m.dot(_m))
+        m = y - np.mean(y)
+        n = y - self.predict(X)
+        return 1 - (n.dot(n) / m.dot(m))
