@@ -1,7 +1,5 @@
 from .ModelInterface import ModelInterface
-
 import numpy as np
-
 
 class SimpleLinearRegression(ModelInterface):
     def __init__(self):
@@ -20,7 +18,7 @@ class SimpleLinearRegression(ModelInterface):
     def predict(self, X):
         return X * self._slope + self._intercept
 
-    def rsquare(self, X, y):
+    def score(self, X, y):
         n = y - self.predict(X)
         m = y - np.mean(y)
         return 1 - (n.dot(n) / m.dot(m))
