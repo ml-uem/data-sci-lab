@@ -4,9 +4,9 @@ from .Utils import Utils
 
 class LogisticRegression(ModelInterface):
 
-  def __init__(self, learning_rate, epoch, print_iter):
+  def __init__(self, learning_rate, epochs, print_iter):
     self._learning_rate = learning_rate
-    self._epoch = epoch
+    self._epochs = epochs
     self._print_iter = print_iter
     return self    
 
@@ -16,7 +16,7 @@ class LogisticRegression(ModelInterface):
     self.m = dim
     return self
 
-  def _propagation(X, Y):
+  def _propagation(self, X, Y):
     # forward propagation
     activation = Utils.Sigmoid(np.dot(self.w.T, X) + self.b)
     cost = Utils.CrossEntropyLoss(Y, activation, self.m)
@@ -29,10 +29,10 @@ class LogisticRegression(ModelInterface):
 
     return activation, cost, dw, db
 
-  def fit(X, Y):
+  def fit(self, X, Y):
     self._initialize(X.shape(0))
 
-    for i in range(self.epoch)
+    for i in range(self._epochs):
       activation, cost, dw, db = self.propagation(X, Y)
 
       self.w = self.w - self.learning_rate * dw
@@ -42,7 +42,7 @@ class LogisticRegression(ModelInterface):
         print('the epoch is: ' + i + ' the error is: ' + self.cost)
 
 
-  def predict(X):
+  def predict(self, X):
     m = X.shape[1]
     Y_prediction = np.zeros((1, m))
 
