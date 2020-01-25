@@ -8,7 +8,6 @@ class LogisticRegression(ModelInterface):
     self._learning_rate = learning_rate
     self._epochs = epochs
     self._print_iter = print_iter
-    return self    
 
   def _initialize(self, dim):
     self.w = np.zeros((dim, 1))
@@ -22,37 +21,36 @@ class LogisticRegression(ModelInterface):
     cost = Utils.CrossEntropyLoss(Y, activation, self.m)
 
     # backward propagation
-    dw = np.dot(1/m, np.dot(X, (activation-Y).T))
-    db = np.dot(1/m, np.sum(activation-Y))
+    dw = 1 / self.m * np.dot(X, (activation - Y).T)
+    db = np.dot(1 / self.m, np.sum(activation - Y))
 
     cost = np.squeeze(cost)
 
     return activation, cost, dw, db
 
   def fit(self, X, Y):
-    self._initialize(X.shape(0))
+    self._initialize(X.shape[0])
 
     for i in range(self._epochs):
-      activation, cost, dw, db = self.propagation(X, Y)
+      activation, cost, dw, db = self._propagation(X, Y)
 
-      self.w = self.w - self.learning_rate * dw
-      self.b = self.b - self.learning_rate * db
+      self.w = self.w - self._learning_rate * dw
+      self.b = self.b - self._learning_rate * db
 
-      if (self._print_iter % i == 0):
-        print('the epoch is: ' + i + ' the error is: ' + self.cost)
+      if (self._print_iter and i % self._epochs == 0):
+        print('the epoch is: %i the error is %f' %(i, cost))
 
 
   def predict(self, X):
-    m = X.shape[1]
-    Y_prediction = np.zeros((1, m))
+    Y_prediction = np.zeros((1, self.m))
 
-    activation = Utils.Sigmoid(np.dot(self.w.T, X) + self.b)    
+    activation = Utils.Sigmoid(np.dot(self.w.T, X) + self.b) 
 
     for i in range(activation.shape[1]):
-      if (activation >= 0.5):
-        Y_prediction[0][i] = 1        
+      if activation[0][i] <= 0.5:
+        Y_prediction[0][i] = 0        
       else:
-        Y_prediction[0][i] = 0  
+        Y_prediction[0][i] = 1  
 
     return Y_prediction        
 
