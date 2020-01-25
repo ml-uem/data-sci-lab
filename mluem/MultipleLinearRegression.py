@@ -6,8 +6,7 @@ class MultipleLinearRegression(ModelInterface):
         self._w = 0
 
     def fit(self, X, y):
-        self._w = np.linalg.solve(
-            np.dot(X, np.transpose(X)), np.dot(np.transpose(X), y))
+        self._w = np.linalg.solve(np.dot(X.T, X), np.dot(X.T, y))
         return self
 
     def predict(self, X):
