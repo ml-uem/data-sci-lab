@@ -1,12 +1,14 @@
 import numpy as np
 
 
-class Utils:
-    def __init__(self):
-        return
-
-    def Sigmoid(self, z):
+class Utils:    
+    def Sigmoid(z):
         return (1/(1+np.exp(-z)))
 
-    def CrossEntropyLoss(self, Y, A, m):
-        return np.dot(-1 / m, (np.sum(Y * np.log(A) + (1 - Y) * np.log(1 - A))))
+    def CrossEntropyLoss(Y, A, m):
+        m = Y.shape[1] 
+        logprobs = np.multiply(np.log(A),Y)+(1-Y)*(np.log(1-A))
+        cost = -np.sum(logprobs)/m
+        cost = np.squeeze(cost)
+
+        return cost
