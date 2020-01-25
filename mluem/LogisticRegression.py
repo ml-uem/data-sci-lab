@@ -52,8 +52,7 @@ class LogisticRegression(ModelInterface):
     m = X.shape[1]
     Y_prediction = np.zeros((1, m))
 
-    activation = Utils.Sigmoid(np.dot(self.w.T, X) + self.b)
-    print(activation.shape)
+    activation = Utils.Sigmoid(np.dot(self.w.T, X) + self.b)    
 
     for i in range(activation.shape[1]):
       if (activation >= 0.5):
