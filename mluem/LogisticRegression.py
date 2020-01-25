@@ -31,11 +31,8 @@ class LogisticRegression(ModelInterface):
 
   def fit(X, Y):
     self._initialize(X.shape(0))
-    print(self.w.T.shape)
 
-    i = 0
-
-    while self.epoch <= i:
+    for i in range(self.epoch)
       activation, cost, dw, db = self.propagation(X, Y)
 
       self.w = self.w - self.learning_rate * dw
@@ -43,10 +40,7 @@ class LogisticRegression(ModelInterface):
 
       if (self._print_iter % i == 0):
         print('the epoch is: ' + i + ' the error is: ' + self.cost)
-      
-      i += 1
 
-    print(self.w.T.shape)
 
   def predict(X):
     m = X.shape[1]
