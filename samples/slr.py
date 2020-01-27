@@ -5,8 +5,8 @@ import mluem.SimpleLinearRegression as slr
 
 def main():
     lineal = slr()    
-    file = '' # add your path
-    df = pd.read_csv('', sep=',',header=None)
+    filepath = '' # add your path ../usecases/simple_linear_regression/data/1.csv
+    df = pd.read_csv(filepath, sep=',',header=None)
     x = df.values[:, 0]
     y = df.values[:, 1]
 
