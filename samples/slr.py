@@ -1,7 +1,7 @@
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
-import mluem.SimpleLinearRegression as slr
+from mluem import SimpleLinearRegression as slr
 
 def main():
     lineal = slr()    
