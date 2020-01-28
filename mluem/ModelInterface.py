@@ -1,4 +1,3 @@
-import numpy as np
 
 class ModelInterface:
     def __init__(self): raise NotImplementedError
