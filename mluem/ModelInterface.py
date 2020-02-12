@@ -1,5 +1,3 @@
-import numpy as np
-
 
 class ModelInterface:
     def __init__(self): raise NotImplementedError
@@ -8,4 +6,4 @@ class ModelInterface:
 
     def predict(self, X): raise NotImplementedError
 
-    def rsquare(self, X, y): raise NotImplementedError
+    def score(self, X, y): raise NotImplementedError
