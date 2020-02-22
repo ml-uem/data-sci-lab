@@ -2,7 +2,7 @@ from .ModelInterface import ModelInterface
 
 from .SimpleLinearRegression import SimpleLinearRegression
 from .MultipleLinearRegression import MultipleLinearRegression
-from .Logisticregression import LogisticRegression
-from .SNLL import SNLL
+from .SingleLayerNeuralNetwork import SingleLayerNeuralNetwork
+from .LogisticRegression import LogisticRegression
 from .Utils import Utils
-from .KNN import KNN #KNN Alg Binary classification and regression
+from .KNN import KNN
