@@ -14,8 +14,8 @@ class NaiveBayes(ModelInterface):
         self.classes = np.unique(y)        
         classes_index = {}
         subdatasets = {}
-        cls, counts = np.unique(y, return_counts=True)        
-        self.class_freq = dict(zip(cls, counts))
+        klass, counts = np.unique(y, return_counts=True)        
+        self.class_freq = dict(zip(klass, counts))
         for class_type in self.classes:
             classes_index[class_type] = np.argwhere(y==class_type)
             subdatasets[class_type] = X[classes_index[class_type], :]
@@ -34,7 +34,7 @@ class NaiveBayes(ModelInterface):
         return (1 / (math.sqrt(2 * math.pi) * stdev)) * exponent
 
     def predict_proba(self, X):
-        self.class_prob = {cls:math.log(self.class_freq[cls], math.e) for cls in self.classes}
+        self.class_prob = {klass:math.log(self.class_freq[klass], math.e) for klass in self.classes}
         for klass in self.classes:
             for i in range(len(self.means)):
                 self.class_prob[klass]+=math.log(self.calculate_probability(X[i], self.means[klass][i], self.std[klass][i]), math.e)
@@ -46,10 +46,10 @@ class NaiveBayes(ModelInterface):
         for x in X:
             pred_class = None
             max_prob = 0
-            for cls, prob in self.predict_proba(x).items():
+            for klass, prob in self.predict_proba(x).items():
                 if prob>max_prob:
                     max_prob = prob
-                    pred_class = cls
+                    pred_class = klass
             pred.append(pred_class)
         return np.asarray(pred)
 
