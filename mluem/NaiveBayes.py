@@ -4,7 +4,11 @@ from .ModelInterface import ModelInterface
 
 class NaiveBayes(ModelInterface):
     def __init__(self):
-        pass
+        self.classes = []
+        self.class_freq = {}
+        self.means = {}
+        self.std = {}
+        self.class_prob = {}
 
     def separate_by_classes(self, X, y):
         self.classes = np.unique(y)        
@@ -19,9 +23,7 @@ class NaiveBayes(ModelInterface):
         return subdatasets
     
     def fit(self, X, y):
-        separated_X = self.separate_by_classes(X, y)
-        self.means = {}
-        self.std = {}
+        separated_X = self.separate_by_classes(X, y)        
         for class_type in self.classes:
             # Here we calculate the mean and the standart deviation from datasets
             self.means[class_type] = np.mean(separated_X[class_type], axis=0)[0]
@@ -33,10 +35,10 @@ class NaiveBayes(ModelInterface):
 
     def predict_proba(self, X):
         self.class_prob = {cls:math.log(self.class_freq[cls], math.e) for cls in self.classes}
-        for cls in self.classes:
+        for klass in self.classes:
             for i in range(len(self.means)):
-                self.class_prob[cls]+=math.log(self.calculate_probability(X[i], self.means[cls][i], self.std[cls][i]), math.e)
-        self.class_prob = {cls: math.e**self.class_prob[cls] for cls in self.class_prob}
+                self.class_prob[klass]+=math.log(self.calculate_probability(X[i], self.means[klass][i], self.std[klass][i]), math.e)
+        self.class_prob = {klass: math.e**self.class_prob[klass] for klass in self.class_prob}
         return self.class_prob
 
     def predict(self, X):        
